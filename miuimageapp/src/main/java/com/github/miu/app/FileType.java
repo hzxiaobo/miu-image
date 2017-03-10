@@ -1,7 +1,7 @@
 /*
- * @(#) FileType.java 2017年03月10日
- * 
- * Copyright 2010 NetEase.com, Inc. All rights reserved.
+ * @(#) FileType.java 2017年03月11日
+ *
+ * Copyright 2010 hzxiaobo, MIT License.
  */
 package com.github.miu.app;
 
