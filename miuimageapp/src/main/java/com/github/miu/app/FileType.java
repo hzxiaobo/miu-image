@@ -118,11 +118,11 @@ public class FileType {
         String res = null;
         try {
             FileInputStream is = new FileInputStream(filePaht);
-            byte[] b = new byte[10];
+            byte[] b = new byte[3]; //其中gif是前3个bytes定义了types
             is.read(b, 0, b.length);
             String fileCode = bytesToHexString(b);
 
-            System.out.println(fileCode);
+            System.out.println("result check, file code is : " + fileCode);
 
 
             //这种方法在字典的头代码不够位数的时候可以用但是速度相对慢一点
@@ -130,6 +130,7 @@ public class FileType {
             while(keyIter.hasNext()){
                 String key = keyIter.next();
                 if(key.toLowerCase().startsWith(fileCode.toLowerCase()) || fileCode.toLowerCase().startsWith(key.toLowerCase())){
+                    System.out.println("result check, matched key is : " + key);
                     res = FILE_TYPE_MAP.get(key);
                     break;
                 }
@@ -144,13 +145,31 @@ public class FileType {
 
     public static void main(String[] args) throws Exception {
 
-        String type = getFileType("C:/test/eee.WMV");
-        System.out.println("eee.WMV : "+type);
+        String type = getFileType("/home/xiaobo/data/image-format/gif-1.gif");
+        System.out.println("gif-1.gif : "+type);
+        System.out.println();
+        type = getFileType("/home/xiaobo/data/image-format/gif-2.gif");
+        System.out.println("gif-2.gif : "+type);
+        System.out.println();
+        type = getFileType("/home/xiaobo/data/image-format/gif-3.gif");
+        System.out.println("gif-3.gif : "+type);
+        System.out.println();
+        type = getFileType("/home/xiaobo/data/image-format/jpg-1.jpeg");
+        System.out.println("jpg-1.jpg : "+type);
+        System.out.println();
+        type = getFileType("/home/xiaobo/data/image-format/jpg-2.jpeg");
+        System.out.println("jpg-2.jpg : "+type);
+        System.out.println();
+        type = getFileType("/home/xiaobo/data/image-format/png-1.png");
+        System.out.println("png-1.png : "+type);
+        System.out.println();
+        type = getFileType("/home/xiaobo/data/image-format/png-2.png");
+        System.out.println("png-2.png : "+type);
+        System.out.println();
+        type = getFileType("/home/xiaobo/data/image-format/webp-1.webp");
+        System.out.println("webp-1.webp : "+type);
         System.out.println();
 
-        type = getFileType("C:/test/350996.wav");
-        System.out.println("350996.wav : "+type);
-        System.out.println();
 
     }
 }

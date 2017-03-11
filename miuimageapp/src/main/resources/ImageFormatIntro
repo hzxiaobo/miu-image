@@ -1,0 +1,2 @@
+文件头描述块(Header)定义GIF数据流(GIF Data Stream)，由GIF标记域(Signature,3 bytes)和版本号(Version,3 bytes)域组成，是一个由6个固定字节组成的数据块，它们用来说明使用的文件格式是GIF格式及当前所用的版本号。
+GIF标记域(Signature)存放的是“GIF”，版本号域存放的是1987年5月发布的“87a”或者1989年7月发布的“89a”，或者更加新的版本号。
