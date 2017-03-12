@@ -61,3 +61,36 @@ GIF标记域(Signature)存放的是“GIF”，版本号域存放的是1987年5�
         FILE_TYPE_MAP.put("AC9EBD8F", "qdf"); //Quicken (qdf)
         FILE_TYPE_MAP.put("E3828596", "pwl"); //Windows Password (pwl)
         FILE_TYPE_MAP.put("2E7261FD", "ram"); //Real Audio (ram)
+
+
+读取文件的额前3个bytes里的数据
+
+
+        FILE_TYPE_MAP.put("FFD8FF", "jpg");
+        FILE_TYPE_MAP.put("89504E", "png");
+        FILE_TYPE_MAP.put("474946", "gif");
+        FILE_TYPE_MAP.put("49492A", "tif");
+        FILE_TYPE_MAP.put("424D", "bmp");
+        FILE_TYPE_MAP.put("524946","webp");
+        //
+        FILE_TYPE_MAP.put("41433130", "dwg"); //CAD
+        FILE_TYPE_MAP.put("38425053", "psd");
+        FILE_TYPE_MAP.put("7B5C727466", "rtf"); //日记本
+        FILE_TYPE_MAP.put("3C3F786D6C", "xml");
+        FILE_TYPE_MAP.put("68746D6C3E", "html");
+        FILE_TYPE_MAP.put("44656C69766572792D646174653A", "eml"); //邮件
+        FILE_TYPE_MAP.put("D0CF11E0", "doc");
+        FILE_TYPE_MAP.put("5374616E64617264204A", "mdb");
+        FILE_TYPE_MAP.put("252150532D41646F6265", "ps");
+        FILE_TYPE_MAP.put("255044462D312E", "pdf");
+        FILE_TYPE_MAP.put("504B0304", "zip");
+        FILE_TYPE_MAP.put("52617221", "rar");
+        FILE_TYPE_MAP.put("57415645", "wav");
+        FILE_TYPE_MAP.put("41564920", "avi");
+        FILE_TYPE_MAP.put("2E524D46", "rm");
+        FILE_TYPE_MAP.put("000001BA", "mpg");
+        FILE_TYPE_MAP.put("000001B3", "mpg");
+        FILE_TYPE_MAP.put("6D6F6F76", "mov");
+        FILE_TYPE_MAP.put("3026B2758E66CF11", "asf");
+        FILE_TYPE_MAP.put("4D546864", "mid");
+        FILE_TYPE_MAP.put("1F8B08", "gz");
