@@ -27,6 +27,8 @@ public class FileTypeUtilsTest {
             String imgFilePath = filePath+ fileName;
             String type = FileTypeUtils.getFileType(imgFilePath);
             System.out.println(fileName + "'s type is: "+ type);
+            assert fileName.startsWith(type):"assert Wrong, " + fileName + "'s type: " + type;
+            //发现了一堆png格式的图像，明天去修改命名吧
         }
 
 
