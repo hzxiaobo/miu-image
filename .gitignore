@@ -1,4 +1,12 @@
+.*
+target/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
 *.class
+*.iml
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
