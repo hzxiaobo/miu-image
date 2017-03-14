@@ -5,9 +5,11 @@
  */
 package com.miu.image.utils;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -64,7 +66,7 @@ public class ImageTypeUtil {
      * @param filePath 读取文件的路径
      * @return 返回文件的类型
      */
-    public static String getFileType(String filePath){
+    public static String getImageType(String filePath){
         String res = null;
         FileInputStream is = null;
         try {
@@ -104,8 +106,45 @@ public class ImageTypeUtil {
     }
 
 
+    /**
+     * 读取本地文件，并将其转化为byte[]
+     * @param filePath 文件存放的地址，将其读取出来，并转化为byte[]
+     * @return 返回文件的byte[]格式的数据
+     * @throws IOException 如果读取错误，扔出IOException
+     */
+    public static byte[] inputStream2ByteArray(String filePath) throws IOException {
 
-    public static String getFileType(byte[] imageBytes){
+        InputStream in = new FileInputStream(filePath);
+        byte[] data = toByteArray(in);
+        in.close();
+
+        return data;
+    }
+
+    /**
+     * 从InputStream中读取数据，并将其转化为byte[]
+     * @param in 输入的 InputStream数组
+     * @return 返回的byte[]
+     * @throws IOException 如果转化失败，则扔出IOException
+     */
+    private static byte[] toByteArray(InputStream in) throws IOException {
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        byte[] buffer = new byte[1024 * 4];
+        int n = 0;
+        while ((n = in.read(buffer)) != -1) {
+            out.write(buffer, 0, n);
+        }
+        return out.toByteArray();
+    }
+
+
+    /**
+     * 输入图像的byte[]数组，输出图像的类型，如果不在判断的图像类型之列，则返回null
+     * @param imageBytes 输入的图像的byte数组
+     * @return 返回图像类型
+     */
+    public static String getImageType(byte[] imageBytes){
         String res = null;
         try {
             byte[] b = new byte[3]; //其中gif是前3个bytes定义了types
