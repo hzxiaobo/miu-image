@@ -12,11 +12,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * @author hzxiaobo
  * @version 2017年03月10日
  */
-public class FileTypeUtils {
+public class ImageTypeUtil {
     private final static Map<String, String> FILE_TYPE_MAP = new HashMap<String, String>();
 
     static{
@@ -70,6 +72,9 @@ public class FileTypeUtils {
             byte[] b = new byte[3]; //其中gif是前3个bytes定义了types
             is.read(b, 0, b.length);
             String fileCode = bytesToHexString(b);
+            if (StringUtils.isBlank(fileCode)){
+                return null;
+            }
 
             System.out.println("result check, file code is : " + fileCode);
 
