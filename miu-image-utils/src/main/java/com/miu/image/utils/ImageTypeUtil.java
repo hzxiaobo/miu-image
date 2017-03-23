@@ -21,7 +21,7 @@ import org.apache.commons.lang3.StringUtils;
  * @version 2017年03月10日
  */
 public class ImageTypeUtil {
-    private final static Map<String, String> FILE_TYPE_MAP = new HashMap<String, String>();
+    private final static Map<String, String> FILE_TYPE_MAP = new HashMap<>();
 
     static{
         loadImageFileTypes(); //初始化文件类型信息
@@ -30,8 +30,7 @@ public class ImageTypeUtil {
     /**
      * 相关文件的表示文件类型的头几个字节，预先load到Map中，方便读取后获得相应的type
      */
-    private static void loadImageFileTypes()
-    {
+    private static void loadImageFileTypes(){
         FILE_TYPE_MAP.put("FFD8FF", "jpg");
         FILE_TYPE_MAP.put("89504E", "png");
         FILE_TYPE_MAP.put("474946", "gif");
@@ -73,20 +72,17 @@ public class ImageTypeUtil {
             is = new FileInputStream(filePath);
             byte[] b = new byte[3]; //其中gif是前3个bytes定义了types
             is.read(b, 0, b.length);
-            String fileCode = bytesToHexString(b);
+            String fileCode = bytesToHexString(b).toUpperCase();
             if (StringUtils.isBlank(fileCode)){
                 return null;
             }
-
-            System.out.println("result check, file code is : " + fileCode);
-
-
+            //System.out.println("result check, file code is : " + fileCode);
             //这种方法在字典的头代码不够位数的时候可以用但是速度相对慢一点
             Iterator<String> keyIter = FILE_TYPE_MAP.keySet().iterator();
             while(keyIter.hasNext()){
                 String key = keyIter.next();
-                if(key.toLowerCase().startsWith(fileCode.toLowerCase()) || fileCode.toLowerCase().startsWith(key.toLowerCase())){
-                    System.out.println("result check, matched key is : " + key);
+                if(key.toUpperCase().startsWith(fileCode.toUpperCase()) || fileCode.toUpperCase().startsWith(key.toUpperCase())){
+                    //System.out.println("result check, matched key is : " + key);
                     res = FILE_TYPE_MAP.get(key);
                     break;
                 }
@@ -131,7 +127,7 @@ public class ImageTypeUtil {
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         byte[] buffer = new byte[1024 * 4];
-        int n = 0;
+        int n;
         while ((n = in.read(buffer)) != -1) {
             out.write(buffer, 0, n);
         }
@@ -149,22 +145,14 @@ public class ImageTypeUtil {
         try {
             byte[] b = new byte[3]; //其中gif是前3个bytes定义了types
             System.arraycopy(imageBytes,0, b, 0, b.length);
-
-//            is = new FileInputStream(filePath);
-//
-//            is.read(b, 0, b.length);
-//            imageBytes.
-            String fileCode = bytesToHexString(b);
-
-            System.out.println("result check, file code is : " + fileCode);
-
-
-            //这种方法在字典的头代码不够位数的时候可以用但是速度相对慢一点
+            String fileCode = bytesToHexString(b).toUpperCase();
+            //System.out.println("result check, file code is : " + fileCode);
+            //这种方法在字典的头代码不够位数的时候可以用，但是速度相对慢一点
             Iterator<String> keyIter = FILE_TYPE_MAP.keySet().iterator();
             while(keyIter.hasNext()){
                 String key = keyIter.next();
-                if(key.toLowerCase().startsWith(fileCode.toLowerCase()) || fileCode.toLowerCase().startsWith(key.toLowerCase())){
-                    System.out.println("result check, matched key is : " + key);
+                if(key.toUpperCase().startsWith(fileCode.toUpperCase()) || fileCode.toUpperCase().startsWith(key.toUpperCase())){
+                    //System.out.println("result check, matched key is : " + key);
                     res = FILE_TYPE_MAP.get(key);
                     break;
                 }

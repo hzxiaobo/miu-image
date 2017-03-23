@@ -16,8 +16,13 @@ import org.junit.Test;
  */
 public class ImageTypeUtilTest {
 
+    /**
+     * 测试函数getImageType(String filePath)，
+     * 直接输入本地文件名，读取图像，并读取头文件。
+     * @throws Exception IOException
+     */
     @Test
-    public void testImageType() throws Exception {
+    public void testGetImageTypeLocalFile() throws Exception {
         String filePath = "src/test/resources/test-image-type/";
         String fileListPath = filePath + "image-type.list";
         System.out.println(String.format("file Path is : %s", fileListPath));
@@ -31,8 +36,13 @@ public class ImageTypeUtilTest {
         }
     }
 
+    /**
+     * 测试函数getImageType(byte[] imageBytes)，
+     * 在测试函数中读取本地文件后，转为ByteArray之后，再测试函数
+     * @throws Exception IOException
+     */
     @Test
-    public void getImageTypeTest() throws Exception{
+    public void testGetImageTypeFromByteArray() throws Exception{
         String filePath = "src/test/resources/test-image-type/";
         String fileListPath = filePath + "image-type.list";
         System.out.println(String.format("file Path is : %s", fileListPath));
